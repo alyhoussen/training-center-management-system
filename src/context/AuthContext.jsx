@@ -1,23 +1,13 @@
-// src/context/AuthContext.jsx
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
-// Contexte pour la gestion de l'authentification
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  const login = (credentials) => {
-    // Implémentation simplifiée de la connexion (simulation)
-    setUser({ email: credentials.email });
-  };
-
-  const logout = () => {
-    setUser(null);
-  };
+  // Simule un utilisateur connecté par défaut
+  const [user, setUser] = useState({ email: "user@example.com", name: "John Doe" });
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user }}>
       {children}
     </AuthContext.Provider>
   );

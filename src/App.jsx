@@ -1,46 +1,39 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import Students from './pages/Students';
-import Teachers from './pages/Teachers';
-import Payments from './pages/Payments';
-import Notifications from './pages/Notifications';
-import Login from './pages/Login';
-import Navbar from './components/layout/Navbar';
-import Sidebar from './components/layout/Sidebar';
-import Footer from './components/layout/Footer';
-import { AuthProvider } from './context/AuthContext';
-import { NotificationProvider } from './context/NotificationContext';
-import './styles/pages.css';
-import './styles/components.css';
-import './styles/layout.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
+import Dashboard from "./pages/Dashboard";
+import Students from "./pages/Students";
+import Teachers from "./pages/Teachers";
+import Payments from "./pages/Payments";
+import Notifications from "./pages/Notifications";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <NotificationProvider>
-        <Router>
-          <div className="app-container">
-            <Sidebar />
-            <div className="main-content">
-              <Navbar />
-              <div className="content">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/students" element={<Students />} />
-                  <Route path="/teachers" element={<Teachers />} />
-                  <Route path="/payments" element={<Payments />} />
-                  <Route path="/notifications" element={<Notifications />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
-              </div>
-              <Footer />
-            </div>
-          </div>
-        </Router>
-      </NotificationProvider>
-    </AuthProvider>
+    <Router>
+      <div className="flex">
+        {/* Sidebar est en position fixe */}
+        <Sidebar />
+
+        {/* Container principal avec marge à gauche pour compenser le sidebar en desktop */}
+        <div className="flex flex-col min-h-screen w-full md:ml-64">
+          <Navbar />
+          <main className="flex-1 p-5">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/students" element={<Students />} />
+              <Route path="/teachers" element={<Teachers />} />
+              <Route path="/payments" element={<Payments />} />
+              <Route path="/notifications" element={<Notifications />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </div>
+    </Router>
   );
 };
 
