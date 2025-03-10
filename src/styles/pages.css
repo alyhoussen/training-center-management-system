@@ -1,0 +1,19 @@
+/* src/styles/pages.css */
+/* Styles spécifiques pour les pages */
+h1 {
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.cards-container,
+.students-list,
+.teachers-list,
+.payments-list,
+.notifications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
